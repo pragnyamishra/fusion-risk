@@ -1,0 +1,44 @@
+# ---------------------------------------------------------------------------
+# Deployment (serve-time) requirements for free-tier hosting.
+#
+# This is a TRIMMED version of the full requirements.txt used for training.
+# The deployed app only needs to load the already-trained model and render
+# the dashboard, so training-only heavy libraries (optuna) are removed and
+# the rest are pinned lean.
+#
+# If your winning model in metadata.json is XGBoost/LightGBM/CatBoost, keep
+# the matching line under "model runtime" below. If it is LogisticRegression,
+# RandomForest, or GradientBoosting (pure scikit-learn), you can delete all
+# three model-runtime lines to shrink the build further.
+# ---------------------------------------------------------------------------
+
+# core app + data
+streamlit>=1.31
+scikit-learn>=1.3
+numpy>=1.24,<2.0
+pandas>=2.0
+scipy>=1.10
+pyarrow>=14.0
+joblib>=1.3
+matplotlib>=3.7
+
+# model runtime: needed only to UNPICKLE a gradient-boosted best_model.joblib.
+# Delete the lines you do not need (see note above).
+xgboost>=2.0
+lightgbm>=4.1
+catboost>=1.2
+
+# explainability shown in the app
+shap>=0.44
+
+# fairness audit tab
+fairlearn>=0.10
+
+# fairness audit tab
+fairlearn>=0.10
+
+# NOTE: The Experiments tab reads the MLflow store via Python's built-in
+# sqlite3 (no mlflow dependency needed at serve time). lime, full mlflow,
+# and optuna are intentionally omitted from the deployed build to stay within
+# free-tier memory. The app degrades gracefully if LIME is unavailable;
+# training still uses the full requirements.txt.
