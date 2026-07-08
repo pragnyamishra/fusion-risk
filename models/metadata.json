@@ -1,0 +1,107 @@
+{
+  "best_model": "LogisticRegression",
+  "split_kind": "temporal",
+  "default_rate": 0.18110362207244146,
+  "n_train": 74998,
+  "n_test": 25000,
+  "leaderboard": [
+    {
+      "roc_auc": 0.7044525116050249,
+      "pr_auc": 0.36021198986951536,
+      "f1": 0.4140091472965353,
+      "precision": 0.2973362131029518,
+      "recall": 0.6813776036296143,
+      "model": "LogisticRegression",
+      "train_time_s": 9.0
+    },
+    {
+      "roc_auc": 0.7037013259726147,
+      "pr_auc": 0.36013900203595356,
+      "f1": 0.40994094488188976,
+      "precision": 0.29210134128166915,
+      "recall": 0.6871519901010518,
+      "model": "XGBoost-Optuna",
+      "train_time_s": NaN
+    },
+    {
+      "roc_auc": 0.7033796670567203,
+      "pr_auc": 0.3599190347704558,
+      "f1": 0.41146690292368054,
+      "precision": 0.2968136583584406,
+      "recall": 0.6704475149515364,
+      "model": "CatBoost",
+      "train_time_s": 5.15
+    },
+    {
+      "roc_auc": 0.7015123567119803,
+      "pr_auc": 0.35636802981662574,
+      "f1": 0.4092717741426135,
+      "precision": 0.2949745083758194,
+      "recall": 0.6681790059806145,
+      "model": "XGBoost",
+      "train_time_s": 2.01
+    },
+    {
+      "roc_auc": 0.7004512660696542,
+      "pr_auc": 0.35027519853829225,
+      "f1": 0.058067030397505846,
+      "precision": 0.5265017667844523,
+      "recall": 0.030727985151577646,
+      "model": "GradientBoosting",
+      "train_time_s": 28.71
+    },
+    {
+      "roc_auc": 0.69407105452616,
+      "pr_auc": 0.3476139317594451,
+      "f1": 0.4069310229923359,
+      "precision": 0.300610476565577,
+      "recall": 0.6296143534749433,
+      "model": "RandomForest",
+      "train_time_s": 1.92
+    },
+    {
+      "roc_auc": 0.6917225248405269,
+      "pr_auc": 0.3448705496377415,
+      "f1": 0.4069300069300069,
+      "precision": 0.3064398288278885,
+      "recall": 0.6054856671478656,
+      "model": "LightGBM",
+      "train_time_s": 5.35
+    }
+  ],
+  "features": {
+    "financial": [
+      "loan_amnt",
+      "loan_amnt_log",
+      "int_rate",
+      "annual_inc",
+      "income_log",
+      "dti",
+      "fico_range_high",
+      "installment",
+      "installment_to_income",
+      "loan_to_income"
+    ],
+    "behavioral": [
+      "delinq_2yrs",
+      "inq_last_6mths",
+      "pub_rec",
+      "delinq_2yrs_log",
+      "inq_last_6mths_log",
+      "pub_rec_log",
+      "behavioral_risk_score",
+      "emp_length_years"
+    ],
+    "categorical": [
+      "purpose",
+      "home_ownership",
+      "grade"
+    ],
+    "text": "text_combined"
+  },
+  "libs": {
+    "xgboost": true,
+    "lightgbm": true,
+    "catboost": true
+  }
+}
